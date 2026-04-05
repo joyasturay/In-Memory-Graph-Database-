@@ -59,21 +59,30 @@
 
 <div class="container">
   
-  <div class="panel">
-    <h3>Query</h3>
-    <p style="color: #aaa; font-size: 14px;">Data loaded: 500 connected nodes.</p>
-
+ <div class="panel">
+  <h3>Query</h3>
+  <p style="color: #aaa; font-size: 14px;">
+    Initialized with <b>500 nodes</b> connected via <code>'next'</code> edges.
+  </p>
+  <div style="background:#1a1a1a; padding:10px; border-radius:6px; margin-bottom:10px; font-size:13px; color:#ccc;">
+    <b>Query Format:</b><br>
+    <code>g.v("Node0").out("next").property("name")</code><br><br>
+    <b>Example:</b><br>
+    <code>g.v("Node0").out("next").out("next").property("name")</code>
+  </div>
+  <div style="margin-bottom:10px;">
     <span>g.v('</span>
     <input id="startNode" value="Node0" style="width:80px;">
     <span>')</span>
 
-    <input id="commands" value=".out('next').out('next').out('next').property('name')" style="width:250px;">
-
-    <br><br>
-    <button onclick="executeQuery()">Run</button>
-
-    <pre id="output">// Results will appear here...</pre>
+    <input id="commands" 
+      value=".out('next').out('next').out('next').property('name')" 
+      style="width:250px;">
   </div>
+  <button onclick="executeQuery()">Run</button>
+  <h4 style="margin-top:15px;">Result</h4>
+  <pre id="output">// Results will appear here...</pre>
+</div>
 
   <div class="panel">
     <h3>Graph</h3>
