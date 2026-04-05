@@ -187,16 +187,24 @@ function executeQuery() {
   const outputBox = document.getElementById("output");
 
   let result = [];
+  outputBox.innerText = "Running...";
 
   try {
+    const startTime = performance.now();
     result = eval(`g.v('${start}')${cmd}.run()`);
-    outputBox.innerText = JSON.stringify(result, null, 2);
+
+    const endTime = performance.now();
+    outputBox.innerText =
+      `Results (${result.length})\n` +
+      `Execution time: ${(endTime - startTime).toFixed(2)} ms\n\n` +
+      JSON.stringify(result, null, 2);
+
   } catch (e) {
-    outputBox.innerText = "Error: " + e.message;
+    outputBox.innerText = `❌ Invalid query\n\n${e.message}`;
   }
+
   drawGraph(result);
 }
-
 function getGraphData() {
   return {
     nodes: g.vertices.map((v) => ({ id: v._id, name: v.name })),
