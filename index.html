@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Graph DB + D3 Visualization</title>
+
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #1e1e1e;
+      color: white;
+      padding: 20px;
+    }
+    .container {
+      display: flex;
+      gap: 20px;
+    }
+    .panel {
+      background: #2d2d2d;
+      padding: 20px;
+      border-radius: 8px;
+      flex: 1;
+    }
+    input {
+      padding: 8px;
+      margin: 5px;
+      border-radius: 4px;
+      border: 1px solid #555;
+      background: #333;
+      color: white;
+    }
+    button {
+      padding: 10px 20px;
+      background: #4CAF50;
+      border: none;
+      border-radius: 4px;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #45a049;
+    }
+    pre {
+      background: black;
+      padding: 15px;
+      border-radius: 4px;
+      color: #00ff00;
+      overflow-x: auto;
+    }
+  </style>
+</head>
+
+<body>
+
+<h1>Graph DB + Visualization</h1>
+
+<div class="container">
+  
+  <div class="panel">
+    <h3>Query</h3>
+    <p style="color: #aaa; font-size: 14px;">Data loaded: 500 connected nodes.</p>
+
+    <span>g.v('</span>
+    <input id="startNode" value="Node0" style="width:80px;">
+    <span>')</span>
+
+    <input id="commands" value=".out('next').out('next').out('next').property('name')" style="width:250px;">
+
+    <br><br>
+    <button onclick="executeQuery()">Run</button>
+
+    <pre id="output">// Results will appear here...</pre>
+  </div>
+
+  <div class="panel">
+    <h3>Graph</h3>
+    <svg id="graph" width="100%" height="80vh"></svg> 
+  </div>
+
+</div>
+
+<script src="index.js"></script>
+
+</body>
+</html>
